@@ -4,18 +4,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  fetch-public-ip:
+  use-my-ip:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Fetch Public IP
-        id: fetch_ip
-        run: |
-          echo "Fetching your public IP..."
-          IP=$(curl -s https://api.ipify.org)
-          echo "Public IP is: $IP"
-          echo "ip_address=$IP" >> $GITHUB_OUTPUT
-
-      - name: Show Public IP Output
-        run: echo "The fetched IP is ${{ steps.fetch_ip.outputs.ip_address }}"
+      - name: Show My Public IP
+        run: echo "My actual public IP from secret is: ${{ secrets.MY_PUBLIC_IP }}"
