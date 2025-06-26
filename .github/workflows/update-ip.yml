@@ -1,4 +1,4 @@
-name: Demo Workflow
+name: update nsg Workflow
 
 on:
   workflow_dispatch:
