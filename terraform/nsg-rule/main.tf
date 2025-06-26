@@ -1,5 +1,10 @@
 provider "azurerm" {
   features {}
+
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
 
 data "azurerm_network_security_group" "target_nsg" {
@@ -19,4 +24,4 @@ resource "azurerm_network_security_rule" "rdp_rule" {
   destination_address_prefix  = "*"
   network_security_group_name = data.azurerm_network_security_group.target_nsg.name
   resource_group_name         = data.azurerm_network_security_group.target_nsg.resource_group_name
-}
+} 
